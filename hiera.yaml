@@ -1,0 +1,14 @@
+---
+version: 5
+
+defaults:
+  data_hash: yaml_data
+  datadir: /etc/puppetlabs/code
+
+hierarchy:
+- name: "default"
+  paths:
+  - "hieradata/common.yaml"
+  - "modules/%{module_name}/hieradata/common.yaml"
+  - "modules/%{module_name}/hieradata/%{::environment}.yaml"
+  - "hieradata/%{::environment}.yaml"
