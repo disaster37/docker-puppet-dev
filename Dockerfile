@@ -36,6 +36,8 @@ RUN /opt/puppetlabs/puppet/bin/gem install beaker-task_helper -v 1.7.2
 RUN /opt/puppetlabs/puppet/bin/gem install beaker-rspec -v 6.2.4
 RUN /opt/puppetlabs/puppet/bin/gem install beaker-docker -v 0.5.1
 
+RUN /opt/puppetlabs/puppet/bin/gem install beaker-hiera -v 0.1.1
+
 # Install Bolt
 RUN yum install -y puppet-bolt-1.8.1 &&\
     yum clean all
