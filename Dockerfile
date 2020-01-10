@@ -54,6 +54,10 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
     rm -f /lib/systemd/system/basic.target.wants/*;\
     rm -f /lib/systemd/system/anaconda.target.wants/*;
 
+
+# Copy patch
+COPY patch/module_install_helper.rb /opt/puppetlabs/puppet/lib/ruby/gems/2.4.0/gems/beaker-module_install_helper-0.1.7/lib/beaker/module_install_helper.rb
+
 # Create dev user
 RUN useradd -G wheel -m dev
 
