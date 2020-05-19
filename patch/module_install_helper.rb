@@ -111,7 +111,7 @@ module Beaker::ModuleInstallHelper
     # that matches to version requirement
     forge_data['releases'].each do |rel|
       return rel['version'] if vrs.all? { |vr| vr.match?('', rel['version']) }
-    end
+    end unless forge_data['releases'].nil?
 
     raise "No release version found matching '#{vr_str}'"
   end
