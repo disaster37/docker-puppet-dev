@@ -70,8 +70,13 @@ module Beaker::ModuleInstallHelper
 
     dependencies = []
     metadata['dependencies'].each do |d|
+      
+      if d['private'] == true
+        next
+      end
+      
       tmp = { module_name: d['name'].sub('/', '-') }
-
+      
       if d.key?('version_requirement')
         tmp[:version] = module_version_from_requirement(tmp[:module_name],
                                                         d['version_requirement'])
@@ -111,7 +116,7 @@ module Beaker::ModuleInstallHelper
     # that matches to version requirement
     forge_data['releases'].each do |rel|
       return rel['version'] if vrs.all? { |vr| vr.match?('', rel['version']) }
-    end unless forge_data['releases'].nil?
+    end
 
     raise "No release version found matching '#{vr_str}'"
   end
